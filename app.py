@@ -8,6 +8,13 @@ app = Flask(__name__)
 # Simulamos una "base de datos" en memoria con un diccionario.
 facturas = {}
 
+# Endpoint para obtener todas las facturas
+@app.route('/facturas', methods=['GET'])
+def obtener_facturas():
+    """Devuelve todas las facturas almacenadas."""
+    return jsonify(facturas)
+
+
 # Endpoint para crear una factura
 @app.route("/facturas", methods=["POST"])
 def crear_factura():
@@ -29,14 +36,15 @@ def crear_factura():
         # Si falta algún campo requerido, retornamos un error.
         return jsonify({"error": "Datos incompletos"}), 400
 
-    # Usamos UUID para garantizar IDs únicos y evitar colisiones.
+    # Definimos la factura con los datos recibidos y un ID único, en un diccionario de Python.
     factura = {
         "id": uuid.uuid4().hex,  # ID único en formato hexadecimal
         "cliente": data["cliente"], # Nombre del cliente
         "total": data["total"], # Total de la factura
     }
 
-    # Guardamos la factura en la "base de datos" en memoria.
+    # Guarda la factura en la "base de datos" en memoria, dentro del diccionario facturas, usando su ID como clave.
+    # En el diccionario facturas, se guarda la factura usando su ID como clave, recordando que un diccionario es una colección de pares clave-valor.
     facturas[factura["id"]] = factura
     # Retornamos la factura creada con un código de estado 201 (Created).
     return jsonify(factura), 201
@@ -53,19 +61,6 @@ def obtener_factura(factura_id):
 
     # Si la factura existe, la retornamos.
     return jsonify(factura)
-
-
-# Endpoint para verificar que el microservicio está activo.
-@app.route("/", methods=["GET"])
-def home():
-    # Endpoint informativo para verificar que el microservicio está activo.
-    return jsonify({
-        "mensaje": "Microservicio de Facturas activo 🚀",
-        "endpoints": {
-            "crear_factura": "POST /facturas",
-            "obtener_factura": "GET /facturas/<id>"
-        }
-    })
 
 
 # Ejecutando la aplicación Flask

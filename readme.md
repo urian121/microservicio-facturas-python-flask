@@ -3,6 +3,9 @@
 Microservicio simple en **Python + Flask** para **crear** y **consultar** facturas.
 Ideal para aprender los conceptos básicos de APIs REST y microservicios.
 
+![Microservicio de Facturas (Python y Flask)](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/refs/heads/master/microservicio-facturas-python-flask-1.png)
+
+![Microservicio de Facturas (Python y Flask)](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/refs/heads/master/microservicio-facturas-python-flask-2.png)
 
 ## Características del Microservicio
 
