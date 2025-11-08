@@ -51,13 +51,11 @@ Crea una nueva factura
 Consulta una factura por su ID
 
 **Ejemplo:**
-
 ```bash
 curl http://127.0.0.1:5000/facturas/8f45b9f17a33495f8b4cb9c88b9c42e1
 ```
 
 **Respuesta 200:**
-
 ```json
 {
   "id": "8f45b9f17a33495f8b4cb9c88b9c42e1",
@@ -67,19 +65,15 @@ curl http://127.0.0.1:5000/facturas/8f45b9f17a33495f8b4cb9c88b9c42e1
 ```
 
 **Errores posibles:**
-
 * `404 Not Found` → Factura no encontrada.
 
-
 ## Notas
-
 * Los datos se almacenan **en memoria**, por lo que **se pierden al reiniciar** el servidor.
 * En producción se recomienda:
 
   * Usar una base de datos (PostgreSQL, MySQL, MongoDB, etc.)
   * Manejar errores y logs adecuadamente.
   * Añadir autenticación o control de acceso.
-
 
 #### `Flask`
 
@@ -110,8 +104,7 @@ print(data)
 
 `.get_json()` → es un método que lee el cuerpo (`body`) de esa petición y lo convierte automáticamente a un diccionario de Python, si el contenido es `JSON` válido.
 
-#### `jsonify`
-Convierte tus **respuestas Python en JSON** de forma automática y segura.
+`jsonify` Convierte tus **respuestas Python en JSON** de forma automática y segura.
 
 ```python
 from flask import jsonify
